@@ -1,1 +1,66 @@
-function card(p){return `<a class="card"><img src="${p.image}"><h2>${p.title} ↗</h2></a>`}let g=document.getElementById("grid");if(g)g.innerHTML=projects.filter(p=>p.featured).map(card).join("");let a=document.getElementById("all");if(a)a.innerHTML=projects.map(card).join("");let r=document.getElementById("reel");if(r)r.onpointermove=e=>{let b=r.getBoundingClientRect(),x=(e.clientX-b.left-b.width/2)/b.width,y=(e.clientY-b.top-b.height/2)/b.height;document.querySelectorAll(".piece").forEach((p,i)=>p.style.transform=`translate(${x*(12+i*3)}px,${y*(8+i*2)}px) rotate(var(--r))`)}
+// =========================
+// PROJECT CARD TEMPLATE
+// =========================
+function card(project) {
+  return `
+    <a class="card" href="project.html?project=${project.slug}">
+      <img src="${project.image}" alt="${project.title}">
+      <h2>${project.title} ↗</h2>
+    </a>
+  `;
+}
+
+
+// =========================
+// HOMEPAGE FEATURED PROJECTS
+// =========================
+const featuredGrid = document.getElementById("grid");
+
+if (featuredGrid) {
+  featuredGrid.innerHTML = projects
+    .filter(project => project.featured)
+    .map(card)
+    .join("");
+}
+
+
+// =========================
+// WORK PAGE — ALL PROJECTS
+// =========================
+const allProjects = document.getElementById("all");
+
+if (allProjects) {
+  allProjects.innerHTML = projects
+    .map(card)
+    .join("");
+}
+
+
+// =========================
+// HOMEPAGE CURSOR MOVEMENT
+// =========================
+const reel = document.getElementById("reel");
+
+if (reel) {
+  reel.addEventListener("pointermove", event => {
+    const bounds = reel.getBoundingClientRect();
+
+    const x =
+      (event.clientX - bounds.left - bounds.width / 2) /
+      bounds.width;
+
+    const y =
+      (event.clientY - bounds.top - bounds.height / 2) /
+      bounds.height;
+
+    document.querySelectorAll(".piece").forEach((piece, index) => {
+      const moveX = x * (12 + index * 3);
+      const moveY = y * (8 + index * 2);
+
+      piece.style.transform = `
+        translate(${moveX}px, ${moveY}px)
+        rotate(var(--r))
+      `;
+    });
+  });
+}
