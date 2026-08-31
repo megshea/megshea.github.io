@@ -1,6 +1,5 @@
-# Portfolio V2
-This version replaces the text hero with an interactive visual reel.
+# Portfolio V2 — Smaller Reel
 
-Upload all files and folders inside this package to `megshea.github.io`, replacing the old files.
+This is the same visual-reel concept, but the six floating images are substantially smaller so the homepage feels more spacious and editorial.
 
-To replace reel images later, edit `index.html`. To edit the project list, edit `js/projects.js`.
+Upload the files/folders inside this package to the root of `megshea.github.io`, replacing the existing files.
