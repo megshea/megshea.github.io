@@ -1,0 +1,17 @@
+/* EDIT PROJECTS HERE. category: design, motion, film, photo. featured:true puts it on homepage. */ 
+const projects=[
+{slug:"recipe-roulette",title:"Recipe Roulette",category:"design",type:"Product · Digital · Branding",description:"A playful recipe discovery app.",image:"images/placeholder-01.svg",featured:true,size:"large"},
+{slug:"min-shaw",title:"Min Shaw",category:"design",type:"Brand Identity · Animation",description:"Visual identity and motion work for a house-music DJ.",image:"images/placeholder-02.svg",featured:true,size:"medium"},
+{slug:"alligator",title:"Alligator",category:"film",type:"Film · Directing · Editing",description:"A short film made for a 24-hour filmmaking challenge.",image:"images/placeholder-03.svg",featured:true,size:"medium"},
+{slug:"photography",title:"Photography",category:"photo",type:"Photography · Portrait · Concert",description:"Selected portrait, concert, graduation, and lifestyle photography.",image:"images/placeholder-04.svg",featured:true,size:"large"},
+{slug:"controls-nyc",title:"Controls NYC",category:"design",type:"Product · UX · Digital",description:"A digital experience for building management and control.",image:"images/placeholder-05.svg",featured:true,size:"medium"},
+{slug:"kiraku",title:"Kiraku",category:"design",type:"Web · Branding · Digital",description:"A website and digital identity for a restaurant.",image:"images/placeholder-06.svg",featured:true,size:"medium"},
+{slug:"feds",title:"FEDS",category:"design",type:"Web · UI · Digital",description:"A digital design project.",image:"images/placeholder-07.svg",featured:false,size:"small"},
+{slug:"frontier-bio",title:"Frontier Bio",category:"design",type:"Graphic Design · Infographic",description:"Information-focused graphic and marketing design.",image:"images/placeholder-08.svg",featured:false,size:"small"},
+{slug:"hcg",title:"HCG",category:"design",type:"Graphic Design · Merch",description:"Merchandise and visual assets.",image:"images/placeholder-09.svg",featured:false,size:"small"},
+{slug:"nova",title:"Nova",category:"design",type:"Brand Identity · Logo",description:"A logo and identity exploration.",image:"images/placeholder-10.svg",featured:false,size:"small"},
+{slug:"sunstainable-surfboards",title:"Sunstainable Surfboards",category:"film",type:"Film · Editing",description:"A short-form film project.",image:"images/placeholder-11.svg",featured:false,size:"small"},
+{slug:"la-la-lost-you",title:"La La Lost You",category:"film",type:"Music Video · Film",description:"A music-video project.",image:"images/placeholder-12.svg",featured:false,size:"small"},
+{slug:"motion-archive",title:"Motion Archive",category:"motion",type:"Editing · Animation · Motion",description:"A collection of smaller motion pieces.",image:"images/placeholder-13.svg",featured:false,size:"medium"},
+{slug:"graphic-design-archive",title:"Graphic Design Archive",category:"design",type:"Posters · Marketing · Illustration",description:"A collection of posters, stickers, social graphics, and event materials.",image:"images/placeholder-14.svg",featured:false,size:"medium"},
+{slug:"photo-archive",title:"Photo Archive",category:"photo",type:"Portrait · Events · Lifestyle",description:"Additional photography projects and shoots.",image:"images/placeholder-15.svg",featured:false,size:"medium"}];
