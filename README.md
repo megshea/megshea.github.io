@@ -1,13 +1,6 @@
-# Megan Armbrust Portfolio — V1
-Static HTML/CSS/JS portfolio for GitHub Pages.
+# Portfolio V2
+This version replaces the text hero with an interactive visual reel.
 
-## Edit projects
-Open `js/projects.js`. Change title, category, type, description, image, featured, and size. Put real images in `/images`.
+Upload all files and folders inside this package to `megshea.github.io`, replacing the old files.
 
-## Edit text
-Homepage: `index.html` · About: `about.html` · Contact: `contact.html`
-
-## Publish
-GitHub repository → Settings → Pages → Deploy from a branch → `main` → `/ (root)` → Save.
-
-Keep Squarespace active until the new site and custom domain are tested.
+To replace reel images later, edit `index.html`. To edit the project list, edit `js/projects.js`.
