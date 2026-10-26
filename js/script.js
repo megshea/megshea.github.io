@@ -1,70 +1,35 @@
-// =========================
-// PROJECT CARD TEMPLATE
-// =========================
+// Project cards: consistent 4:3 thumbnail frames, with no title arrows.
 function card(project) {
+  const fallback = project.fallbackImage || project.image;
   return `
-    <a class="card" href="project.html?project=${project.slug}">
-      <img src="${project.image}" alt="${project.title}" onerror="this.onerror=null;this.src=\'${project.fallbackImage || project.image}\'">
-      <h2>${project.title} ↗</h2>
-    </a>
-  `;
+    <a class="card" href="project.html?project=${encodeURIComponent(project.slug)}">
+      <div class="card-media"><img src="${project.image}" alt="${project.title}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'"></div>
+      <h2>${project.title}</h2>
+    </a>`;
 }
 
-
-// =========================
-// HOMEPAGE FEATURED PROJECTS
-// =========================
 const featuredGrid = document.getElementById("grid");
+if (featuredGrid) featuredGrid.innerHTML = projects.filter(p => p.featured).slice(0,6).map(card).join("");
 
-if (featuredGrid) {
-  featuredGrid.innerHTML = projects
-    .filter(project => project.featured)
-    .map(card)
-    .join("");
-}
-
-
-// =========================
-// WORK PAGE — ALL PROJECTS
-// =========================
 const allProjects = document.getElementById("all");
+if (allProjects) allProjects.innerHTML = projects.map(card).join("");
 
-if (allProjects) {
-  allProjects.innerHTML = projects
-    .map(card)
-    .join("");
-}
-
-
-// =========================
-// HOMEPAGE CURSOR MOVEMENT
-// =========================
+// Subtle pointer-follow motion for the floating homepage pieces.
 const reel = document.getElementById("reel");
-
-if (reel) {
-  reel.addEventListener("pointermove", event => {
-    const bounds = reel.getBoundingClientRect();
-
-    const x =
-      (event.clientX - bounds.left - bounds.width / 2) /
-      bounds.width;
-
-    const y =
-      (event.clientY - bounds.top - bounds.height / 2) /
-      bounds.height;
-
-    document.querySelectorAll(".piece").forEach((piece, index) => {
-      const moveX = x * (12 + index * 3);
-      const moveY = y * (8 + index * 2);
-
-      piece.style.transform = `
-        translate(${moveX}px, ${moveY}px)
-        rotate(var(--r))
-      `;
-    });
+if (reel) reel.addEventListener("pointermove", event => {
+  const bounds = reel.getBoundingClientRect();
+  const x = (event.clientX - bounds.left - bounds.width / 2) / bounds.width;
+  const y = (event.clientY - bounds.top - bounds.height / 2) / bounds.height;
+  reel.querySelectorAll(".piece").forEach((piece, index) => {
+    piece.style.transform = `translate(${x*(12+index*3)}px,${y*(8+index*2)}px) rotate(var(--r))`;
   });
-}
+});
 
+// Homepage videos: show the poster if a loop hasn't been uploaded yet.
+document.querySelectorAll(".piece video").forEach(video => {
+  video.addEventListener("error", () => video.classList.add("video-unavailable"));
+  video.querySelector("source")?.addEventListener("error", () => video.classList.add("video-unavailable"));
+});
 
 // =========================
 // EDITABLE PROJECT PAGE CONTENT
@@ -104,6 +69,26 @@ function sectionsFor(project) {
     ${block("The film", `<p>Add a synopsis, credits, and your role.</p>${placeholder("Film or trailer", "Embed a video player or hosted film here.")}`)}
     ${block("Selected frames", gallery(project))}
     ${block("Behind the scenes", "<p>Add production stills and notes about your creative process.</p>")}`;
+  // Collage-only archive: no explanations.
+  if (project.slug === "graphic-design-archive") {
+    const items = graphicDesignImages.length ? graphicDesignImages.map((src, i) =>
+      `<img loading="lazy" class="collage-item" src="${src}" alt="Graphic design work ${i+1}">`
+    ).join("") : Array.from({length: 8}, (_,i) =>
+      `<div class="collage-empty">GRAPHIC DESIGN IMAGE ${i+1}<small>add path in js/projects.js</small></div>`
+    ).join("");
+    return `<div class="editorial-collage">${items}</div>`;
+  }
+  // Photography sessions: replace each session's images in js/projects.js.
+  if (["photography","photo-archive"].includes(project.slug)) {
+    return photographySessions.map(session => {
+      const items = session.images.length ? session.images.map((src,i) =>
+        `<img loading="lazy" src="${src}" alt="${session.title} photo ${i+1}">`
+      ).join("") : Array.from({length:3}, (_,i) =>
+        `<div class="photo-empty">PHOTO ${i+1}<small>add to ${session.title}</small></div>`
+      ).join("");
+      return `<section class="photo-session"><h2>${session.title}</h2><div class="photo-collage">${items}</div></section>`;
+    }).join("");
+  }
   if (type.includes("photo")) return `
     ${block("Selected photographs", gallery(project))}
     ${block("About the series", "<p>Add locations, subjects, and context for this collection.</p>")}`;
@@ -130,13 +115,13 @@ if (projectDetail) {
     const details = projectDetails[slug] || { discipline: project.category === "design" ? "Graphic Design" : project.category, intro: "A selected creative project.", role: "Design" };
     document.title = project.title + " — Megan Armbrust";
     const next = projects[(projects.indexOf(project) + 1) % projects.length];
-    const hero = slug === "decoverai" ? "" : `<img class="project-hero" src="${project.image}" alt="${project.title}" onerror="this.onerror=null;this.src='${project.fallbackImage || project.image}'">`;
+    const hero = ["decoverai", "photography", "photo-archive", "graphic-design-archive"].includes(slug) ? "" : `<img class="project-hero" src="${project.image}" alt="${project.title}" onerror="this.onerror=null;this.src='${project.fallbackImage || project.image}'">`;
     projectDetail.innerHTML = `
       <section class="project-intro">
         <div class="project-kicker">${details.discipline} / Selected Work</div>
         <h1>${project.title}</h1>
-        <p class="project-lede">${details.intro}</p>
-        <div class="project-meta"><span>Discipline: ${details.discipline}</span><span>Role: ${details.role}</span></div>
+        ${["graphic-design-archive","photography","photo-archive"].includes(slug) ? "" : `<p class="project-lede">${details.intro}</p>`}
+        ${["graphic-design-archive","photography","photo-archive"].includes(slug) ? "" : `<div class="project-meta"><span>Discipline: ${details.discipline}</span><span>Role: ${details.role}</span></div>`}
       </section>
       ${hero}
       ${sectionsFor(project)}
