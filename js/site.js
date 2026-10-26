@@ -9,7 +9,7 @@ document.body.insertAdjacentHTML("beforeend", `
         <a href="#top" class="back-top">BACK TO TOP ↑</a>
       </div>
     </div>
-    <div class="footer-bottom"><span>© ${new Date().getFullYear()} MEGAN ARMBRUST</span><span>MADE WITH CARE IN NYC</span></div>
+    <div class="footer-bottom"><span>© ${new Date().getFullYear()} MEGAN ARMBRUST</span><span>DESIGN · MOTION · FILM · PHOTOGRAPHY</span></div>
   </footer>
 `);
 document.querySelector(".back-top")?.addEventListener("click", e => {
