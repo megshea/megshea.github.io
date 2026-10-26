@@ -9,10 +9,10 @@ function card(project) {
 }
 
 const featuredGrid = document.getElementById("grid");
-if (featuredGrid) featuredGrid.innerHTML = projects.filter(p => p.featured).slice(0,6).map(card).join("");
+if (featuredGrid) featuredGrid.innerHTML = projects.filter(p => p.published && p.featured).slice(0,6).map(card).join("");
 
 const allProjects = document.getElementById("all");
-if (allProjects) allProjects.innerHTML = projects.map(card).join("");
+if (allProjects) allProjects.innerHTML = projects.filter(p => p.published).map(card).join("");
 
 // Subtle pointer-follow motion for the floating homepage pieces.
 const reel = document.getElementById("reel");
@@ -38,7 +38,7 @@ document.querySelectorAll(".piece video").forEach(video => {
 const projectDetails = {
   "recipe-roulette": { discipline: "Product Design", intro: "An interactive recipe discovery concept.", role: "Design" },
   "controls-nyc": { discipline: "Product Design", intro: "A digital product design project.", role: "Design" },
-  "kiraku": { discipline: "Brand Design", intro: "Brand identity and digital design.", role: "Design" },
+  "kiraku": { discipline: "Web Design", intro: "A digital design project for Kiraku.", role: "Design" },
   "min-shaw": { discipline: "Graphic Design", intro: "An identity and visual design project.", role: "Design" },
   "sunstainable-surfboards": { discipline: "Film", intro: "A film exploring surfing and the coast.", role: "Filmmaking" },
   "alligator": { discipline: "Film", intro: "A film project.", role: "Filmmaking" },
@@ -108,14 +108,15 @@ function sectionsFor(project) {
 const projectDetail = document.getElementById("project-detail");
 if (projectDetail) {
   const slug = new URLSearchParams(location.search).get("project");
-  const project = projects.find(item => item.slug === slug);
+  const project = projects.find(item => item.slug === slug && item.published);
   if (!project) {
     projectDetail.innerHTML = '<h1>PROJECT NOT FOUND</h1><p><a href="work.html">Back to work</a></p>';
   } else {
     const details = projectDetails[slug] || { discipline: project.category === "design" ? "Graphic Design" : project.category, intro: "A selected creative project.", role: "Design" };
     document.title = project.title + " — Megan Armbrust";
-    const next = projects[(projects.indexOf(project) + 1) % projects.length];
-    const hero = ["decoverai", "photography", "photo-archive", "graphic-design-archive"].includes(slug) ? "" : `<img class="project-hero" src="${project.image}" alt="${project.title}" onerror="this.onerror=null;this.src='${project.fallbackImage || project.image}'">`;
+    const publishedProjects = projects.filter(item => item.published);
+    const next = publishedProjects[(publishedProjects.indexOf(project) + 1 + publishedProjects.length) % publishedProjects.length] || publishedProjects[0];
+    const hero = ["decoverai", "photography", "photo-archive", "graphic-design-archive"].includes(slug) ? "" : `<div class="project-hero-frame"><img class="project-hero" src="${project.image}" alt="${project.title}" onerror="this.onerror=null;this.src='${project.fallbackImage || project.image}'"></div>`;
     projectDetail.innerHTML = `
       <section class="project-intro">
         <div class="project-kicker">${details.discipline} / Selected Work</div>
