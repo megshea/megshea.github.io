@@ -1,5 +1,13 @@
 const projects = [
   {
+    slug: "decoverai",
+    title: "DecoverAI — Product Animations",
+    category: "motion",
+    image: "images/decoverai-thumbnail.jpg",
+    fallbackImage: "images/p13.svg",
+    featured: true
+  },
+  {
     slug: "recipe-roulette",
     title: "Recipe Roulette",
     category: "design",
@@ -18,7 +26,7 @@ const projects = [
     title: "Alligator",
     category: "film",
     image: "images/p3.svg",
-    featured: true
+    featured: false
   },
   {
     slug: "photography",
@@ -73,8 +81,9 @@ const projects = [
     slug: "sunstainable-surfboards",
     title: "Sunstainable Surfboards",
     category: "film",
-    image: "images/p11.svg",
-    featured: false
+    image: "images/sunstainable-surfboards.png",
+    fallbackImage: "images/p11.svg",
+    featured: true
   },
   {
     slug: "la-la-lost-you",
