@@ -67,6 +67,10 @@ function sectionsFor(project) {
     ${block("01 / Discovery at Scale", `<p>Animating the ingestion and analysis of large volumes of discovery documents.</p><div class="project-video"><video controls playsinline preload="metadata" poster="images/decoverai-thumbnail.jpg"><source src="videos/discovery-at-scale.mp4" type="video/mp4"></video></div>`)}
     ${block("02 / Word Contract Review", `<p>A product animation showcasing contract review workflows.</p><div class="project-video"><video controls playsinline preload="metadata"><source src="videos/word-contract-review.mp4" type="video/mp4"></video></div>`)}
     ${block("Creative process", `<p>Add storyboards, Figma frames, and After Effects process images.</p>${gallery(project)}`)}`;
+  if (project.slug === "sunstainable-surfboards") return `
+    ${block("The film", `<div class="project-video"><iframe class="project-youtube" src="https://www.youtube-nocookie.com/embed/PswHhMVzDE4" title="Sunstainable Surfboards film" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>`)}
+    ${block("Selected frames", gallery(project))}
+    ${block("Behind the scenes", "<p>Add production stills and notes about your creative process.</p>")}`;
   if (type.includes("film")) return `
     ${block("The film", `<p>Add a synopsis, credits, and your role.</p>${placeholder("Film or trailer", "Embed a video player or hosted film here.")}`)}
     ${block("Selected frames", gallery(project))}
