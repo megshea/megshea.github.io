@@ -81,11 +81,15 @@ function sectionsFor(project) {
   // Photography sessions: replace each session's images in js/projects.js.
   if (["photography","photo-archive"].includes(project.slug)) {
     return photographySessions.map(session => {
-      const items = session.images.length ? session.images.map((src,i) =>
-        `<img loading="lazy" src="${src}" alt="${session.title} photo ${i+1}">`
-      ).join("") : Array.from({length:3}, (_,i) =>
-        `<div class="photo-empty">PHOTO ${i+1}<small>add to ${session.title}</small></div>`
-      ).join("");
+      const items = Array.from({ length: session.count }, (_, i) => {
+        const number = String(i + 1).padStart(2, "0");
+        const filename = `${session.prefix}-${number}.jpg`;
+        return `<div class="photo-slot">
+          <img loading="lazy" src="images/${filename}" alt="${session.title} photo ${i + 1}"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="photo-empty" style="display:none">PHOTO ${i + 1}<small>images/${filename}</small></div>
+        </div>`;
+      }).join("");
       return `<section class="photo-session"><h2>${session.title}</h2><div class="photo-collage">${items}</div></section>`;
     }).join("");
   }
