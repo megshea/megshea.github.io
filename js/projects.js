@@ -24,11 +24,14 @@ const projects = [
 // EDIT YOUR ARCHIVES HERE:
 // Upload images into /images and replace each example with its actual filename.
 // Each section becomes its own photography session on the project page.
+// Photography: each session has a filename prefix and a slot count.
+// Upload images to /images, e.g. portraits-01.jpg. Missing files show placeholders.
 const photographySessions = [
-  { title: "Performance / RA-ON", images: [] },
-  { title: "Portraits", images: [] },
-  { title: "Graduation", images: [] },
-  { title: "Other sessions", images: [] }
+  { title: "Portraits", prefix: "portraits", count: 9 },
+  { title: "Graduation Ceremony", prefix: "graduation-ceremony", count: 6 },
+  { title: "Graduation Couples", prefix: "graduation-couples", count: 6 },
+  { title: "Graduation Group", prefix: "graduation-group", count: 6 },
+  { title: "RA-ON Performance", prefix: "raon-performance", count: 6 }
 ];
 
 // Graphic Design Archive: add image paths here for a collage without descriptions.
