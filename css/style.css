@@ -497,3 +497,46 @@ a:hover { color: var(--red); }
 /* Shift Sunstainable right. */
 .p3 { left: 25%; }
 @media(max-width:700px) { .p3 { left: 9%; } }
+
+/* Lower Sunstainable without shifting its horizontal position. */
+.p3 { bottom: 5%; }
+@media (max-width:700px) { .p3 { bottom: 6%; } }
+
+/* Preserve original transparent PNG proportions on these two cards. */
+.card[href*="recipe-roulette"] .card-media img,
+.card[href*="kiraku"] .card-media img { object-fit: contain; }
+
+/* Selected Work cards: image-to-category hover, also available via keyboard. */
+.card-media { position: relative; }
+.card-media img { transition: opacity .22s ease; }
+.card-category {
+  position: absolute; inset: 0; display: flex; align-items: center;
+  justify-content: center; padding: 18px; color: var(--red);
+  font-size: clamp(18px, 2.2vw, 32px); font-weight: 800;
+  line-height: 1.05; text-transform: uppercase; text-align: center;
+  opacity: 0; pointer-events: none; transition: opacity .22s ease;
+}
+.card:hover .card-media img, .card:focus-visible .card-media img { opacity: 0; transform: none; }
+.card:hover .card-category, .card:focus-visible .card-category { opacity: 1; }
+.card:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  .card-media img, .card-category { transition: none; }
+}
+
+/* Three medium-sized vertical images for these two sessions. */
+.photo-session:has(img[src*="couples-grad-"]) .photo-collage,
+.photo-session:has(img[src*="raon-performance-"]) .photo-collage {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 2vw, 24px);
+  max-width: 940px;
+}
+.photo-session:has(img[src*="couples-grad-"]) .photo-collage > *,
+.photo-session:has(img[src*="raon-performance-"]) .photo-collage > * {
+  grid-column: auto; aspect-ratio: 3 / 4;
+}
+@media(max-width:700px) {
+  .photo-session:has(img[src*="couples-grad-"]) .photo-collage,
+  .photo-session:has(img[src*="raon-performance-"]) .photo-collage {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
