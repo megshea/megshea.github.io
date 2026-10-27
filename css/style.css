@@ -493,3 +493,7 @@ a:hover { color: var(--red); }
   .p3 { left: 4%; bottom: 9%; }
   .p4 { bottom: 11%; }
 }
+
+/* Shift Sunstainable right. */
+.p3 { left: 25%; }
+@media(max-width:700px) { .p3 { left: 9%; } }
