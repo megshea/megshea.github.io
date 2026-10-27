@@ -31,8 +31,8 @@ const photographySessions = [
   { title: "Portraits", prefix: "portraits", count: 9 },
   { title: "UC Berkeley College of Natural Resources Commencement", prefix: "cnr-commencement", count: 6 },
   { title: "Grad Shoot", prefix: "grad-shoot", count: 6 },
-  { title: "Couples Grad Shoot", prefix: "couples-grad", count: 6 },
-  { title: "RA-ON Performance", prefix: "raon-performance", count: 6 }
+  { title: "Couples Grad Shoot", prefix: "couples-grad", count: 3 },
+  { title: "RA-ON Performance", prefix: "raon-performance", count: 3 }
 ];
 
 // Graphic Design Archive: add image paths here for a collage without descriptions.
