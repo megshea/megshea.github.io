@@ -6,9 +6,9 @@ const projects = [
   { slug: "decoverai", title: "DecoverAI", category: "motion", image: "images/decoverai-thumbnail.jpg", fallbackImage: "images/p13.svg", featured: true, published: true },
   { slug: "photography", title: "Photography", category: "photo", image: "images/DSC_0332.jpg", fallbackImage: "images/p4.svg", featured: true, published: true },
   { slug: "min-shaw", title: "Min Shaw", category: "design", image: "images/MIN SHAW logo v2.png", fallbackImage: "images/p2.svg", featured: true, published: true },
-  { slug: "controls-nyc", title: "Controls NYC", category: "design", image: "images/p5.svg", featured: true, published: true },
+  { slug: "controls-nyc", title: "Controls NYC", category: "design", image: "images/p5.svg", featured: false, published: false },
   { slug: "sunstainable-surfboards", title: "Sunstainable Surfboards", category: "film", image: "images/sunstainable-surfboards.png", fallbackImage: "images/p11.svg", featured: true, published: true },
-  { slug: "recipe-roulette", title: "Recipe Roulette", category: "design", image: "images/recipe roulette mockup.png", fallbackImage: "images/p1.svg", featured: false, published: false },
+  { slug: "recipe-roulette", title: "Recipe Roulette", category: "design", image: "images/recipe roulette mockup.png", fallbackImage: "images/p1.svg", featured: true, published: true },
   { slug: "kiraku", title: "Kiraku", category: "design", image: "images/kiraku mockup.png", fallbackImage: "images/p6.svg", featured: true, published: true },
   { slug: "alligator", title: "Alligator", category: "film", image: "images/p3.svg", featured: false, published: false },
   { slug: "feds", title: "FEDS", category: "design", image: "images/p7.svg", featured: false, published: false },
@@ -27,10 +27,11 @@ const projects = [
 // Photography: each session has a filename prefix and a slot count.
 // Upload images to /images, e.g. portraits-01.jpg. Missing files show placeholders.
 const photographySessions = [
+  { title: "Musician Portraits", prefix: "musician-portraits", count: 6 },
   { title: "Portraits", prefix: "portraits", count: 9 },
-  { title: "Graduation Ceremony", prefix: "graduation-ceremony", count: 6 },
-  { title: "Graduation Couples", prefix: "graduation-couples", count: 6 },
-  { title: "Graduation Group", prefix: "graduation-group", count: 6 },
+  { title: "UC Berkeley College of Natural Resources Commencement", prefix: "cnr-commencement", count: 6 },
+  { title: "Grad Shoot", prefix: "grad-shoot", count: 6 },
+  { title: "Couples Grad Shoot", prefix: "couples-grad", count: 6 },
   { title: "RA-ON Performance", prefix: "raon-performance", count: 6 }
 ];
 
