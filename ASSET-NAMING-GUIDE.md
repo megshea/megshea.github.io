@@ -40,8 +40,8 @@ These filenames are **already wired up**: uploading them to `images/` fills the 
 | Portraits | `portraits-01.jpg` to `portraits-09.jpg` | 9 |
 | UC Berkeley College of Natural Resources Commencement | `cnr-commencement-01.jpg` to `cnr-commencement-06.jpg` | 6 |
 | Grad Shoot | `grad-shoot-01.jpg` to `grad-shoot-06.jpg` | 6 |
-| Couples Grad Shoot | `couples-grad-01.jpg` to `couples-grad-06.jpg` | 6 |
-| RA-ON Performance | `raon-performance-01.jpg` to `raon-performance-06.jpg` | 6 |
+| Couples Grad Shoot | `couples-grad-01.jpg` to `couples-grad-03.jpg` | 3 |
+| RA-ON Performance | `raon-performance-01.jpg` to `raon-performance-03.jpg` | 3 |
 
 Use lowercase letters, hyphens, two-digit numbering, and the exact `.jpg` extension.
 
