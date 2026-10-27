@@ -540,3 +540,6 @@ a:hover { color: var(--red); }
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+/* Responsive embedded film player */
+.project-youtube { display: block; width: 100%; aspect-ratio: 16 / 9; height: auto; border: 0; }
