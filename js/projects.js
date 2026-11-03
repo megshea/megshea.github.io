@@ -3,8 +3,8 @@
 // Set published: false to hide a project without deleting its entry.
 // Edit image paths after uploading images to /images.
 const projects = [
-  { slug: "decoverai", title: "DecoverAI", category: "motion", image: "images/decoverai-thumbnail.jpg", fallbackImage: "images/p13.svg", featured: true, published: true },
-  { slug: "photography", title: "Photography", category: "photo", image: "images/DSC_0332.jpg", fallbackImage: "images/p4.svg", featured: true, published: true },
+  { slug: "decoverai", title: "DecoverAI", category: "motion", image: "images/decoverai-thumbnail.png", fallbackImage: "images/p13.svg", featured: true, published: true },
+  { slug: "photography", title: "Photography", category: "photo", image: "images/photography-card.jpg", fallbackImage: "images/p4.svg", featured: true, published: true },
   { slug: "min-shaw", title: "Min Shaw", category: "design", image: "images/MIN SHAW logo v2.png", fallbackImage: "images/p2.svg", featured: true, published: true },
   { slug: "controls-nyc", title: "Controls NYC", category: "design", image: "images/p5.svg", featured: false, published: false },
   { slug: "sunstainable-surfboards", title: "Sunstainable Surfboards", category: "film", image: "images/sunstainable-surfboards.png", fallbackImage: "images/p11.svg", featured: true, published: true },
