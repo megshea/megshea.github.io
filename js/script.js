@@ -4,10 +4,10 @@ function card(project) {
   const categories = { "decoverai": "Motion Design", "photography": "Photography Works", "min-shaw": "Graphic Design", "recipe-roulette": "Product Design", "sunstainable-surfboards": "Film", "kiraku": "Web Design" };
   const categoryLabel = categories[project.slug] || project.category;
   return `
-    <a class="card" href="project.html?project=${encodeURIComponent(project.slug)}">
+    <div class="card" role="group" aria-label="${project.title}">
       <div class="card-media"><img src="${project.image}" alt="${project.title}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'"><span class="card-category" aria-hidden="true">${categoryLabel}</span></div>
       <h2>${project.title}</h2>
-    </a>`;
+    </div>`;
 }
 
 const featuredGrid = document.getElementById("grid");
