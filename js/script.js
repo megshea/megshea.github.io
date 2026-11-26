@@ -3,11 +3,13 @@ function card(project) {
   const fallback = project.fallbackImage || project.image;
   const categories = { "decoverai": "Motion Design", "photography": "Photography Works", "min-shaw": "Graphic Design", "recipe-roulette": "Product Design", "sunstainable-surfboards": "Film", "kiraku": "Web Design" };
   const categoryLabel = categories[project.slug] || project.category;
+  const enabled = project.slug === "decoverai";
+  const tag = enabled ? "a" : "div";
   return `
-    <div class="card" role="group" aria-label="${project.title}">
+    <${tag} class="card" ${enabled ? 'href="project.html?project=decoverai" style="cursor:pointer"' : 'role="group"'} aria-label="${project.title}">
       <div class="card-media"><img src="${project.image}" alt="${project.title}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'"><span class="card-category" aria-hidden="true">${categoryLabel}</span></div>
       <h2>${project.title}</h2>
-    </div>`;
+    </${tag}>`;
 }
 
 const featuredGrid = document.getElementById("grid");
@@ -64,9 +66,9 @@ function gallery(project) {
 function sectionsFor(project) {
   const type = (projectDetails[project.slug]?.discipline || project.category).toLowerCase();
   if (project.slug === "decoverai") return `
-    ${block("01 / Discovery at Scale", `<p>Animating the ingestion and analysis of large volumes of discovery documents.</p><div class="project-video"><video controls playsinline preload="metadata" poster="images/decoverai-thumbnail.jpg"><source src="videos/discovery-at-scale.mp4" type="video/mp4"></video></div>`)}
-    ${block("02 / Word Contract Review", `<p>A product animation showcasing contract review workflows.</p><div class="project-video"><video controls playsinline preload="metadata"><source src="videos/word-contract-review.mp4" type="video/mp4"></video></div>`)}
-    ${block("Creative process", `<p>Add storyboards, Figma frames, and After Effects process images.</p>${gallery(project)}`)}`;
+    ${block("01 / Discovery at Scale", `<p>Animating the ingestion and analysis of large volumes of discovery documents.</p><div class="project-video"><iframe title="Discovery at Scale — DecoverAI" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7521460660598194177?compact=1" loading="lazy" width="504" height="399" style="display:block;width:100%;height:auto;aspect-ratio:504/399;border:0" allowfullscreen></iframe><p><a href="https://www.linkedin.com/posts/decoverai_1m-files-were-reviewed-in-a-single-35m-activity-7521556809602646016-AWws" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">View original LinkedIn post ↗</a></p></div>`)}
+    ${block("02 / Word Contract Review", `<p>A product animation showcasing contract review workflows.</p><div class="project-video"><iframe title="Word Contract Review — DecoverAI" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7523671105140756481?compact=1" loading="lazy" width="504" height="399" style="display:block;width:100%;height:auto;aspect-ratio:504/399;border:0" allowfullscreen></iframe><p><a href="https://www.linkedin.com/posts/decoverai_friday-4pm-your-client-wants-comments-on-activity-7523746125229506560-YlUa" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">View original LinkedIn post ↗</a></p></div>`)}
+    ${block("03 / Tabular Review", `<p>A product animation introducing Tabular Review.</p><div class="project-video"><iframe title="Tabular Review — DecoverAI" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7528718258762371073?compact=1" loading="lazy" width="504" height="399" style="display:block;width:100%;height:auto;aspect-ratio:504/399;border:0" allowfullscreen></iframe><p><a href="https://www.linkedin.com/posts/decoverai_tabular-review-is-now-live-on-decoverai-activity-7528850722877034496-Fp3J" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">View original LinkedIn post ↗</a></p></div>`)}`;
   if (project.slug === "sunstainable-surfboards") return `
     ${block("The film", `<div class="project-video"><iframe class="project-youtube" src="https://www.youtube-nocookie.com/embed/PswHhMVzDE4" title="Sunstainable Surfboards film" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>`)}
     ${block("Selected frames", gallery(project))}
@@ -136,8 +138,7 @@ if (projectDetail) {
       </section>
       ${hero}
       ${sectionsFor(project)}
-      <div class="project-next"><div class="project-kicker">Next project</div><p><a href="project.html?project=${next.slug}">${next.title} ↗</a></p></div>
-      <a class="project-back" href="work.html">← BACK TO WORK</a>
+      ${slug === "decoverai" ? '<a class="project-back" href="index.html#selected">← BACK TO SELECTED WORK</a>' : `<div class="project-next"><div class="project-kicker">Next project</div><p><a href="project.html?project=${next.slug}">${next.title} ↗</a></p></div><a class="project-back" href="work.html">← BACK TO WORK</a>`}
     `;
   }
 }
