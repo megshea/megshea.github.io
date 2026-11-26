@@ -3,7 +3,7 @@ function card(project) {
   const fallback = project.fallbackImage || project.image;
   const categories = { "decoverai": "Motion Design", "photography": "Photography Works", "min-shaw": "Graphic Design", "recipe-roulette": "Product Design", "sunstainable-surfboards": "Film", "kiraku": "Web Design" };
   const categoryLabel = categories[project.slug] || project.category;
-  const enabled = ["decoverai", "sunstainable-surfboards"].includes(project.slug);
+  const enabled = ["decoverai", "sunstainable-surfboards", "min-shaw"].includes(project.slug);
   const tag = enabled ? "a" : "div";
   return `
     <${tag} class="card" ${enabled ? 'href="project.html?project=' + project.slug + '" style="cursor:pointer"' : 'role="group"'} aria-label="${project.title}">
@@ -43,7 +43,7 @@ const projectDetails = {
   "recipe-roulette": { discipline: "Product Design", intro: "An interactive recipe discovery concept.", role: "Design" },
   "controls-nyc": { discipline: "Product Design", intro: "A digital product design project.", role: "Design" },
   "kiraku": { discipline: "Web Design", intro: "A digital design project for Kiraku.", role: "Design" },
-  "min-shaw": { discipline: "Graphic Design", intro: "An identity and visual design project.", role: "Design" },
+  "min-shaw": { discipline: "Graphic Design / Branding", intro: "Visual identity for a San Francisco house music DJ.", role: "Logo Design" },
   "sunstainable-surfboards": { discipline: "Film", intro: "A short film featuring Ryan Lenney and his approach to sustainable surfboard shaping, exploring how creativity, craftsmanship, and environmental responsibility can give old surfboards a second life.", role: "Filmmaking" },
   "alligator": { discipline: "Film", intro: "A film project.", role: "Filmmaking" },
   "la-la-lost-you": { discipline: "Film", intro: "A film project.", role: "Filmmaking" },
@@ -65,6 +65,10 @@ function gallery(project) {
 }
 function sectionsFor(project) {
   const type = (projectDetails[project.slug]?.discipline || project.category).toLowerCase();
+  if (project.slug === "min-shaw") return `
+    ${block("Final Logo", "<div style=\"max-width:900px;margin:0 auto\"><img src=\"images/min-shaw-final-logo.png\" alt=\"Final logo design\" style=\"display:block;width:100%;height:auto\" onerror=\"this.style.display='none';this.nextElementSibling.style.display='flex'\"><div class=\"project-placeholder\" style=\"display:none;min-height:300px;align-items:center;justify-content:center\">Final logo design — images/min-shaw-final-logo.png</div></div>")}
+    ${block("Project Background", "<p>My friend Amin is a new DJ performing house music sets in San Francisco, and he wanted a logo that visually captured his unique style and the energy of his music. He needed branding that felt modern, sleek, and immersive—something that would stand out in event promotions, social media, and merchandise.</p><p>The final logo features <strong>a bold, blocky sci-fi-inspired typeface enclosed within a sleek oval shape</strong>, reinforcing a futuristic and high-energy aesthetic. The <strong>all-black color scheme</strong> adds a minimalist yet powerful presence, making it adaptable for different mediums. The sharp, modern typography reflects Amin’s dynamic approach to house music—seamlessly blending basslines, smooth transitions, and an electrifying club atmosphere.</p><p>By focusing on clean aesthetics and strong visual appeal, this logo helps establish Amin’s brand in the competitive DJ scene, setting the tone for his growing presence in San Francisco’s house music community.</p>")}
+    ${block("Initial Sketches", "<p>After understanding the vibes of the project and the needs of the client, I start the brainstorming process by creating some mockups in Procreate. These were some of my initial ideas before moving forward with the final design.</p><div style=\"max-width:900px;margin:0 auto\"><img src=\"images/min-shaw-initial-sketches.png\" alt=\"Nine initial sketches\" style=\"display:block;width:100%;height:auto\" onerror=\"this.style.display='none';this.nextElementSibling.style.display='flex'\"><div class=\"project-placeholder\" style=\"display:none;min-height:300px;align-items:center;justify-content:center\">Nine initial sketches — images/min-shaw-initial-sketches.png</div></div>")}`;
   if (project.slug === "decoverai") return `
     ${block("01 / Discovery at Scale", `<p>Animating the ingestion and analysis of large volumes of discovery documents.</p><div class="project-video"><iframe title="Discovery at Scale — DecoverAI" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7521460660598194177?compact=1" loading="lazy" width="504" height="399" style="display:block;width:100%;max-width:640px;height:auto;aspect-ratio:504/399;border:0" allowfullscreen></iframe><p><a href="https://www.linkedin.com/posts/decoverai_1m-files-were-reviewed-in-a-single-35m-activity-7521556809602646016-AWws" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">View original LinkedIn post ↗</a></p></div>`)}
     ${block("02 / Word Contract Review", `<p>A product animation showcasing contract review workflows.</p><div class="project-video"><iframe title="Word Contract Review — DecoverAI" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7523671105140756481?compact=1" loading="lazy" width="504" height="399" style="display:block;width:100%;max-width:640px;height:auto;aspect-ratio:504/399;border:0" allowfullscreen></iframe><p><a href="https://www.linkedin.com/posts/decoverai_friday-4pm-your-client-wants-comments-on-activity-7523746125229506560-YlUa" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">View original LinkedIn post ↗</a></p></div>`)}
@@ -126,7 +130,7 @@ if (projectDetail) {
     document.title = project.title + " — Megan Armbrust";
     const publishedProjects = projects.filter(item => item.published);
     const next = publishedProjects[(publishedProjects.indexOf(project) + 1 + publishedProjects.length) % publishedProjects.length] || publishedProjects[0];
-    const hero = ["decoverai", "sunstainable-surfboards", "photography", "photo-archive", "graphic-design-archive"].includes(slug) ? "" : `<div class="project-hero-frame"><img class="project-hero" src="${project.image}" alt="${project.title}" onerror="this.onerror=null;this.src='${project.fallbackImage || project.image}'"></div>`;
+    const hero = ["decoverai", "sunstainable-surfboards", "min-shaw", "photography", "photo-archive", "graphic-design-archive"].includes(slug) ? "" : `<div class="project-hero-frame"><img class="project-hero" src="${project.image}" alt="${project.title}" onerror="this.onerror=null;this.src='${project.fallbackImage || project.image}'"></div>`;
     projectDetail.innerHTML = `
       <section class="project-intro">
         <div class="project-kicker">${details.discipline} / Selected Work</div>
@@ -136,7 +140,7 @@ if (projectDetail) {
       </section>
       ${hero}
       ${sectionsFor(project)}
-      ${["decoverai", "sunstainable-surfboards"].includes(slug) ? '<a class="project-back" href="index.html#selected">← BACK TO SELECTED WORK</a>' : `<div class="project-next"><div class="project-kicker">Next project</div><p><a href="project.html?project=${next.slug}">${next.title} ↗</a></p></div><a class="project-back" href="work.html">← BACK TO WORK</a>`}
+      ${["decoverai", "sunstainable-surfboards", "min-shaw"].includes(slug) ? '<a class="project-back" href="index.html#selected">← BACK TO SELECTED WORK</a>' : `<div class="project-next"><div class="project-kicker">Next project</div><p><a href="project.html?project=${next.slug}">${next.title} ↗</a></p></div><a class="project-back" href="work.html">← BACK TO WORK</a>`}
     `;
   }
 }
