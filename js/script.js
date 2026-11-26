@@ -3,10 +3,10 @@ function card(project) {
   const fallback = project.fallbackImage || project.image;
   const categories = { "decoverai": "Motion Design", "photography": "Photography Works", "min-shaw": "Graphic Design", "recipe-roulette": "Product Design", "sunstainable-surfboards": "Film", "kiraku": "Web Design" };
   const categoryLabel = categories[project.slug] || project.category;
-  const enabled = project.slug === "decoverai";
+  const enabled = ["decoverai", "sunstainable-surfboards"].includes(project.slug);
   const tag = enabled ? "a" : "div";
   return `
-    <${tag} class="card" ${enabled ? 'href="project.html?project=decoverai" style="cursor:pointer"' : 'role="group"'} aria-label="${project.title}">
+    <${tag} class="card" ${enabled ? 'href="project.html?project=' + project.slug + '" style="cursor:pointer"' : 'role="group"'} aria-label="${project.title}">
       <div class="card-media"><img src="${project.image}" alt="${project.title}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'"><span class="card-category" aria-hidden="true">${categoryLabel}</span></div>
       <h2>${project.title}</h2>
     </${tag}>`;
@@ -44,7 +44,7 @@ const projectDetails = {
   "controls-nyc": { discipline: "Product Design", intro: "A digital product design project.", role: "Design" },
   "kiraku": { discipline: "Web Design", intro: "A digital design project for Kiraku.", role: "Design" },
   "min-shaw": { discipline: "Graphic Design", intro: "An identity and visual design project.", role: "Design" },
-  "sunstainable-surfboards": { discipline: "Film", intro: "A film exploring surfing and the coast.", role: "Filmmaking" },
+  "sunstainable-surfboards": { discipline: "Film", intro: "A short film featuring Ryan Lenney and his approach to sustainable surfboard shaping, exploring how creativity, craftsmanship, and environmental responsibility can give old surfboards a second life.", role: "Filmmaking" },
   "alligator": { discipline: "Film", intro: "A film project.", role: "Filmmaking" },
   "la-la-lost-you": { discipline: "Film", intro: "A film project.", role: "Filmmaking" },
   "decoverai": { discipline: "Motion Design", intro: "Product animations communicating complex legal AI workflows.", role: "Animation / Motion Design" },
@@ -66,13 +66,11 @@ function gallery(project) {
 function sectionsFor(project) {
   const type = (projectDetails[project.slug]?.discipline || project.category).toLowerCase();
   if (project.slug === "decoverai") return `
-    ${block("01 / Discovery at Scale", `<p>Animating the ingestion and analysis of large volumes of discovery documents.</p><div class="project-video"><iframe title="Discovery at Scale — DecoverAI" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7521460660598194177?compact=1" loading="lazy" width="504" height="399" style="display:block;width:100%;height:auto;aspect-ratio:504/399;border:0" allowfullscreen></iframe><p><a href="https://www.linkedin.com/posts/decoverai_1m-files-were-reviewed-in-a-single-35m-activity-7521556809602646016-AWws" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">View original LinkedIn post ↗</a></p></div>`)}
-    ${block("02 / Word Contract Review", `<p>A product animation showcasing contract review workflows.</p><div class="project-video"><iframe title="Word Contract Review — DecoverAI" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7523671105140756481?compact=1" loading="lazy" width="504" height="399" style="display:block;width:100%;height:auto;aspect-ratio:504/399;border:0" allowfullscreen></iframe><p><a href="https://www.linkedin.com/posts/decoverai_friday-4pm-your-client-wants-comments-on-activity-7523746125229506560-YlUa" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">View original LinkedIn post ↗</a></p></div>`)}
-    ${block("03 / Tabular Review", `<p>A product animation introducing Tabular Review.</p><div class="project-video"><iframe title="Tabular Review — DecoverAI" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7528718258762371073?compact=1" loading="lazy" width="504" height="399" style="display:block;width:100%;height:auto;aspect-ratio:504/399;border:0" allowfullscreen></iframe><p><a href="https://www.linkedin.com/posts/decoverai_tabular-review-is-now-live-on-decoverai-activity-7528850722877034496-Fp3J" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">View original LinkedIn post ↗</a></p></div>`)}`;
+    ${block("01 / Discovery at Scale", `<p>Animating the ingestion and analysis of large volumes of discovery documents.</p><div class="project-video"><iframe title="Discovery at Scale — DecoverAI" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7521460660598194177?compact=1" loading="lazy" width="504" height="399" style="display:block;width:100%;max-width:640px;height:auto;aspect-ratio:504/399;border:0" allowfullscreen></iframe><p><a href="https://www.linkedin.com/posts/decoverai_1m-files-were-reviewed-in-a-single-35m-activity-7521556809602646016-AWws" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">View original LinkedIn post ↗</a></p></div>`)}
+    ${block("02 / Word Contract Review", `<p>A product animation showcasing contract review workflows.</p><div class="project-video"><iframe title="Word Contract Review — DecoverAI" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7523671105140756481?compact=1" loading="lazy" width="504" height="399" style="display:block;width:100%;max-width:640px;height:auto;aspect-ratio:504/399;border:0" allowfullscreen></iframe><p><a href="https://www.linkedin.com/posts/decoverai_friday-4pm-your-client-wants-comments-on-activity-7523746125229506560-YlUa" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">View original LinkedIn post ↗</a></p></div>`)}
+    ${block("03 / Tabular Review", `<p>A product animation introducing Tabular Review.</p><div class="project-video"><iframe title="Tabular Review — DecoverAI" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7528718258762371073?compact=1" loading="lazy" width="504" height="399" style="display:block;width:100%;max-width:640px;height:auto;aspect-ratio:504/399;border:0" allowfullscreen></iframe><p><a href="https://www.linkedin.com/posts/decoverai_tabular-review-is-now-live-on-decoverai-activity-7528850722877034496-Fp3J" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">View original LinkedIn post ↗</a></p></div>`)}`;
   if (project.slug === "sunstainable-surfboards") return `
-    ${block("The film", `<div class="project-video"><iframe class="project-youtube" src="https://www.youtube-nocookie.com/embed/PswHhMVzDE4" title="Sunstainable Surfboards film" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>`)}
-    ${block("Selected frames", gallery(project))}
-    ${block("Behind the scenes", "<p>Add production stills and notes about your creative process.</p>")}`;
+    ${block("The film", `<div class="project-video" style="max-width:900px"><iframe class="project-youtube" src="https://www.youtube.com/embed/PswHhMVzDE4?si=BK2Ezhtm0atBSdKy" title="Sunstainable Surfboards film" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p><a href="https://www.youtube.com/watch?v=PswHhMVzDE4" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">Watch on YouTube ↗</a></p></div>`)} `;
   if (type.includes("film")) return `
     ${block("The film", `<p>Add a synopsis, credits, and your role.</p>${placeholder("Film or trailer", "Embed a video player or hosted film here.")}`)}
     ${block("Selected frames", gallery(project))}
@@ -128,7 +126,7 @@ if (projectDetail) {
     document.title = project.title + " — Megan Armbrust";
     const publishedProjects = projects.filter(item => item.published);
     const next = publishedProjects[(publishedProjects.indexOf(project) + 1 + publishedProjects.length) % publishedProjects.length] || publishedProjects[0];
-    const hero = ["decoverai", "photography", "photo-archive", "graphic-design-archive"].includes(slug) ? "" : `<div class="project-hero-frame"><img class="project-hero" src="${project.image}" alt="${project.title}" onerror="this.onerror=null;this.src='${project.fallbackImage || project.image}'"></div>`;
+    const hero = ["decoverai", "sunstainable-surfboards", "photography", "photo-archive", "graphic-design-archive"].includes(slug) ? "" : `<div class="project-hero-frame"><img class="project-hero" src="${project.image}" alt="${project.title}" onerror="this.onerror=null;this.src='${project.fallbackImage || project.image}'"></div>`;
     projectDetail.innerHTML = `
       <section class="project-intro">
         <div class="project-kicker">${details.discipline} / Selected Work</div>
@@ -138,7 +136,7 @@ if (projectDetail) {
       </section>
       ${hero}
       ${sectionsFor(project)}
-      ${slug === "decoverai" ? '<a class="project-back" href="index.html#selected">← BACK TO SELECTED WORK</a>' : `<div class="project-next"><div class="project-kicker">Next project</div><p><a href="project.html?project=${next.slug}">${next.title} ↗</a></p></div><a class="project-back" href="work.html">← BACK TO WORK</a>`}
+      ${["decoverai", "sunstainable-surfboards"].includes(slug) ? '<a class="project-back" href="index.html#selected">← BACK TO SELECTED WORK</a>' : `<div class="project-next"><div class="project-kicker">Next project</div><p><a href="project.html?project=${next.slug}">${next.title} ↗</a></p></div><a class="project-back" href="work.html">← BACK TO WORK</a>`}
     `;
   }
 }
