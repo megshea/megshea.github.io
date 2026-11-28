@@ -551,3 +551,10 @@ a:hover { color: var(--red); }
 .portfolio-progress p { font-size: clamp(16px, 1.8vw, 21px); line-height: 1.6; margin: 0; }
 .portfolio-progress a { text-decoration: underline; text-underline-offset: 4px; }
 .portfolio-progress a:hover { color: var(--red); }
+
+/* Shared sticky navigation and accessible scroll reveals */
+.site-header { position: sticky; top: 0; z-index: 1000; background: var(--bg); }
+html { scroll-padding-top: 100px; }
+.reveal-pending { opacity: 0; translate: 0 16px; transition: opacity .55s ease, translate .55s ease; transition-delay: var(--reveal-delay, 0ms); }
+.reveal-pending.reveal-visible, .reveal-pending:focus-within { opacity: 1; translate: 0 0; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .reveal-pending { opacity: 1; translate: none; transition: none; } }
