@@ -6,9 +6,11 @@
   <title>About — Megan Armbrust</title>
   <link rel="stylesheet" href="css/style.css?v=20261127i">
 <style>
-.about-content.about-portrait-layout { width:100%; max-width:none; grid-template-columns:minmax(0, 1.65fr) minmax(0, 1fr); gap:5vw; align-items:start; }
-.about-portrait-layout .about-photo { width:100%; max-width:460px; justify-self:end; }
-@media(max-width:760px){.about-content.about-portrait-layout{grid-template-columns:1fr;gap:32px}.about-portrait-layout .about-photo{justify-self:start}}
+.about-page{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);column-gap:5vw;align-items:start}
+.about-page .page-lead{grid-column:1;grid-row:1}
+.about-page .about-photo{grid-column:2;grid-row:1 / span 2;width:100%;max-width:620px;justify-self:end;margin-top:clamp(40px,7vw,100px)}
+.about-page .about-content.about-portrait-layout{grid-column:1;grid-row:2;display:block;width:100%;max-width:none}
+@media(max-width:760px){.about-page{display:block}.about-page .about-photo{margin:24px 0 32px;max-width:460px}}
 </style>
 <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
@@ -20,14 +22,15 @@
     <a href="contact.html">CONTACT</a>
   </nav>
 </header>
-<main><section class="page-lead"><p class="eyebrow">A LITTLE ABOUT ME</p><h1>HI, I'M<br>MEGAN.</h1></section>
+<main class="about-page"><section class="page-lead"><p class="eyebrow">A LITTLE ABOUT ME</p><h1>HI, I'M<br>MEGAN.</h1></section>
+  <div class="about-photo"><img src="images/about-me.png" alt="Portrait of Megan" style="width:100%;height:auto;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;aspect-ratio:4/5;border:1px solid #aaa;align-items:center;justify-content:center">Portrait — about-me.png</div></div>
 <section class="about-content about-portrait-layout">
   <div>
     <p class="copy">I'm a NYC-based creative working across design, film, photography, animation, and technology.</p>
     <p class="about-secondary">I graduated from UC Berkeley with a degree in Data Science, and that analytical side still influences how I approach creative work and problem-solving.</p>
     <p class="about-secondary">Outside of work, I thrive in collaborative environments and love being around people, whether that’s sharing ideas, building meaningful connections, or just meeting new friends. I spend free time experimenting in the kitchen, staying active with yoga and the gym, exploring NYC, or finding inspiration through music, food, travel, and everyday moments.</p>
   </div>
-  <div class="about-photo"><img src="images/about-me.png" alt="Portrait of Megan" style="width:100%;height:auto;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;aspect-ratio:4/5;border:1px solid #aaa;align-items:center;justify-content:center">Portrait — about-me.png</div></div>
+
   <div class="signature-area" style="grid-column:1/-1">
     <!-- Upload images/signature.png and it will appear here. -->
     <img src="images/signature.png" alt="Megan's signature" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
