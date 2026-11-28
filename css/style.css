@@ -3,7 +3,7 @@
 ========================= */
 
 :root {
-  --bg: #f5f1e9;
+  --bg: #faf9f6;
   --ink: #171717;
 }
 
@@ -327,7 +327,7 @@ h1 {
    Black remains the primary text color; red and blues are accents.
 ========================================================= */
 :root {
-  --bg: #f5f1e9;
+  --bg: #faf9f6;
   --ink: #171717;
   --red: #e12b2b;
   --blue: #247ba0;
@@ -384,7 +384,7 @@ a:hover { color: var(--red); }
 /* Identical thumbnail frames for all project cards, regardless of source proportions. */
 .grid { grid-template-columns: repeat(3, minmax(0,1fr)); gap: 36px 20px; }
 .card { display: block; min-width: 0; }
-.card-media { width: 100%; aspect-ratio: 4 / 3; overflow: hidden; background: #e8e3da; display: flex; align-items: center; justify-content: center; }
+.card-media { width: 100%; aspect-ratio: 4 / 3; overflow: hidden; background: #f0eee9; display: flex; align-items: center; justify-content: center; }
 .card-media img { display: block; width: 100%; height: 100%; object-fit: contain; transition: transform .35s ease; }
 .card:hover .card-media img { transform: scale(1.04); }
 .card h2 { font-size: 17px; margin: 11px 0 0; letter-spacing: -.025em; font-weight: 700; }
@@ -410,7 +410,7 @@ a:hover { color: var(--red); }
 .footer-links { display: flex; flex-wrap: wrap; gap: 18px 30px; font-size: 12px; font-weight: 700; }
 .footer-bottom { display: flex; justify-content: space-between; gap: 16px; padding-top: 15px; border-top: 1px solid var(--line); font-size: 10px; color: var(--blue-muted); letter-spacing: .06em; }
 .project-shell { width: 100%; }
-.project-hero { max-width: 100%; max-height: 650px; object-fit: contain; background: #e8e3da; }
+.project-hero { max-width: 100%; max-height: 650px; object-fit: contain; background: #f0eee9; }
 .project-intro h1 { font-size: clamp(45px, 7vw, 110px); }
 .project-kicker { color: var(--red); }
 .project-next { border-top-color: var(--line); }
@@ -420,7 +420,7 @@ a:hover { color: var(--red); }
 .collage-item:nth-child(5n+2), .collage-empty:nth-child(5n+2) { grid-column: span 5; }
 .collage-item:nth-child(5n+3), .collage-empty:nth-child(5n+3) { grid-column: span 3; }
 .collage-item:nth-child(5n+4), .collage-empty:nth-child(5n+4) { grid-column: span 6; }
-.collage-empty, .photo-empty { min-height: 210px; background: #e8e3da; border: 1px dashed #a1a1a1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--blue-muted); font-size: 13px; font-weight: 700; text-align: center; padding: 15px; }
+.collage-empty, .photo-empty { min-height: 210px; background: #f0eee9; border: 1px dashed #a1a1a1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--blue-muted); font-size: 13px; font-weight: 700; text-align: center; padding: 15px; }
 .collage-empty small, .photo-empty small { font-size: 10px; font-weight: 400; }
 .photo-session { margin: 5rem 0 7rem; }
 .photo-session h2 { border-top: 1px solid var(--line); padding-top: 20px; font-size: clamp(26px,4vw,52px); letter-spacing: -.05em; }
@@ -455,7 +455,7 @@ a:hover { color: var(--red); }
   min-height: min(64vw, 650px);
   max-height: 700px;
   aspect-ratio: 16 / 9;
-  background: #e8e3da;
+  background: #f0eee9;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -486,7 +486,7 @@ a:hover { color: var(--red); }
 .p5 { --r: 2deg; }
 .card-media img { object-fit: cover; }
 .card:has(img[src*="sunstainable"]) .card-media img { object-fit: cover; }
-.photo-slot { width: 100%; aspect-ratio: 4 / 5; overflow: hidden; background: #e8e3da; }
+.photo-slot { width: 100%; aspect-ratio: 4 / 5; overflow: hidden; background: #f0eee9; }
 .photo-slot img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .photo-slot .photo-empty { width: 100%; height: 100%; min-height: 0; }
 @media(max-width:700px) {
@@ -558,3 +558,18 @@ html { scroll-padding-top: 100px; }
 .reveal-pending { opacity: 0; translate: 0 16px; transition: opacity .55s ease, translate .55s ease; transition-delay: var(--reveal-delay, 0ms); }
 .reveal-pending.reveal-visible, .reveal-pending:focus-within { opacity: 1; translate: 0 0; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .reveal-pending { opacity: 1; translate: none; transition: none; } }
+
+/* Shared editorial palette and hierarchy */
+:root{--body-text:#555;--soft-surface:#f0eee9}
+main p,main li,.about-secondary,.card p,.portfolio-progress p{color:var(--body-text)}
+main .eyebrow,main .project-kicker{color:var(--red)}
+main .copy{color:var(--ink)}
+.project-section h2,.photo-session h2{font-size:clamp(25px,3.3vw,44px)}
+.project-section p{margin-bottom:1.2em}
+.case-number{color:var(--red);font-size:.55em;letter-spacing:0;margin-right:.35em}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:24px}
+.case-card{border-top:1px solid var(--line,#bdb8ae);padding:20px 0;min-width:0}
+.case-card svg{display:block;width:30px;height:30px;color:#57737a;margin-bottom:18px}
+.case-card strong{font-size:20px}.case-card p{margin:12px 0 0}
+.case-card .goal-number{display:block;font-size:42px;color:var(--red);margin-bottom:12px}
+body > header{position:sticky!important;top:0;z-index:1000;background:var(--bg)}
