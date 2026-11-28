@@ -15,13 +15,14 @@
   </nav>
 </header>
 <main><section class="page-lead"><p class="eyebrow">A LITTLE ABOUT ME</p><h1>HI, I'M<br>MEGAN.</h1></section>
-<section class="about-content">
+<section class="about-content" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:48px;align-items:start">
   <div>
     <p class="copy">I'm a NYC-based creative working across design, film, photography, animation, and technology.</p>
     <p class="about-secondary">I graduated from UC Berkeley with a degree in Data Science, and that analytical side still influences how I approach creative work and problem-solving.</p>
     <p class="about-secondary">Outside of work, I thrive in collaborative environments and love being around people, whether that’s sharing ideas, building meaningful connections, or just meeting new friends. I spend free time experimenting in the kitchen, staying active with yoga and the gym, exploring NYC, or finding inspiration through music, food, travel, and everyday moments.</p>
   </div>
-  <div class="signature-area">
+  <div style="max-width:420px;width:100%;justify-self:center"><img src="images/about-me.jpg" alt="Portrait of Megan" style="width:100%;height:auto;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;aspect-ratio:4/5;border:1px solid #aaa;align-items:center;justify-content:center">Portrait — about-me.jpg</div></div>
+  <div class="signature-area" style="grid-column:1/-1">
     <!-- Upload images/signature.png and it will appear here. -->
     <img src="images/signature.png" alt="Megan's signature" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
     <span class="signature-placeholder" style="display:none">YOUR SIGNATURE PNG<br><small>images/signature.png</small></span>
